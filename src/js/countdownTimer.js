@@ -12,6 +12,7 @@ export class CountdownTimer {
   }
 
   init() {
+    this.setTimerDefaultValue();
     this.intervalId = setInterval(() => {
       const startTime = Date.now();
       const deltaTime = this._targetDate - startTime;
@@ -40,5 +41,12 @@ export class CountdownTimer {
     this.refs.hours.textContent = hours;
     this.refs.mins.textContent = mins;
     this.refs.secs.textContent = secs;
+  }
+
+  setTimerDefaultValue() {
+    this.refs.days.textContent = 0;
+    this.refs.hours.textContent = 0;
+    this.refs.mins.textContent = 0;
+    this.refs.secs.textContent = 0;
   }
 }
