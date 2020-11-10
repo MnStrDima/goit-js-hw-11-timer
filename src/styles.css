@@ -15,7 +15,7 @@ body {
 }
 
 .timer {
-  font-size: 40px;
+  font-size: 20px;
   font-weight: 700;
   margin: 0 auto;
   display: flex;
@@ -24,9 +24,43 @@ body {
 }
 
 .field {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
   margin: 20px;
+  background-color: #ffdab9;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .value {
+  font-size: 50px;
   margin-right: 5px;
+  color: #cd853f;
+}
+
+.field:not(:last-child)::before {
+  content: ':';
+  position: absolute;
+  right: -27px;
+  top: 30px;
+  font-size: 50px;
+  color: #cd853f;
+}
+
+.label {
+  position: relative;
+  color: #8b4513;
+}
+
+.label::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: #8b4513;
+  width: 100%;
 }
