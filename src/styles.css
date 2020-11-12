@@ -45,7 +45,7 @@ body {
   content: ':';
   position: absolute;
   right: -27px;
-  top: 30px;
+  top: 1em;
   font-size: 50px;
   color: #cd853f;
 }
@@ -53,6 +53,9 @@ body {
 .label {
   position: relative;
   color: #8b4513;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
 }
 
 .label::before {

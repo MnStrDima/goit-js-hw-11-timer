@@ -12,41 +12,29 @@ export class CountdownTimer {
   }
 
   init() {
-    this.setTimerDefaultValue();
     this.intervalId = setInterval(() => {
       const startTime = Date.now();
       const deltaTime = this._targetDate - startTime;
-      const time = this.getTimeComponents(deltaTime);
-      this.onTick(time);
+      const time = this._getTimeComponents(deltaTime);
     }, 1000);
   }
 
-  getTimeComponents(time) {
-    const days = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
-    const hours = this.pad(
+  _getTimeComponents(time) {
+    this.refs.days.textContent = this._padTime(
+      Math.floor(time / (1000 * 60 * 60 * 24)),
+    );
+    this.refs.hours.textContent = this._padTime(
       Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
     );
-    const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-    const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
-
-    return { days, hours, mins, secs };
+    this.refs.mins.textContent = this._padTime(
+      Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)),
+    );
+    this.refs.secs.textContent = this._padTime(
+      Math.floor((time % (1000 * 60)) / 1000),
+    );
   }
 
-  pad(value) {
+  _padTime(value) {
     return String(value).padStart(2, '0');
-  }
-
-  onTick({ days, hours, mins, secs }) {
-    this.refs.days.textContent = days;
-    this.refs.hours.textContent = hours;
-    this.refs.mins.textContent = mins;
-    this.refs.secs.textContent = secs;
-  }
-
-  setTimerDefaultValue() {
-    this.refs.days.textContent = 0;
-    this.refs.hours.textContent = 0;
-    this.refs.mins.textContent = 0;
-    this.refs.secs.textContent = 0;
   }
 }
